@@ -1,0 +1,11 @@
+Flask==2.2.5
+Flask-Cors==3.0.10
+Flask-Login==0.6.2
+Flask-SQLAlchemy==3.0.3
+mysql-connector-python==8.0.33
+langchain==0.1.0
+chromadb==0.4.15
+google-generativeai==0.3.1
+ollama==0.1.4
+requests==2.31.0
+gunicorn==20.1.0

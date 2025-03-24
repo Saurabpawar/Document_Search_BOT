@@ -1,0 +1,123 @@
+/* Full-page background */
+.login-page {
+    height: 100vh;
+    background: url("D:/project/document_search_bot/L2_POC_RAG/React_frontend/src/Back.jpg") no-repeat center center/cover; /* Access from public folder */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+/* Central login container with improved visibility */
+.login-container {
+    background: rgb(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    padding: 2rem;
+    width: 450px; /* Increased width */
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 1s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+/* Headings with better contrast */
+.login-container h2 {
+    font-size: 40px;
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Subtext */
+.login-container p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Input fields - improved visibility */
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Placeholder text more readable */
+.login-container input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Input focus effect with a glowing border */
+.login-container input:focus {
+    border-color: #ffcc00;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 8px rgba(255, 204, 0, 0.7);
+}
+
+/* Modern login button */
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+/* Button hover effect */
+.login-container button:hover {
+    background: linear-gradient(135deg, #ffcc00, #ff9900);
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(255, 204, 0, 0.6);
+}
+
+/* Fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 480px) {
+    .login-container {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .login-container h2 {
+        font-size: 22px;
+    }
+
+    .login-container p {
+        font-size: 12px;
+    }
+
+    .login-container input {
+        font-size: 14px;
+    }
+
+    .login-container button {
+        font-size: 15px;
+    }
+}

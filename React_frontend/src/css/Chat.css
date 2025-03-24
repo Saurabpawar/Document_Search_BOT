@@ -1,0 +1,187 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main Chat Container: Centering and Styling */
+.Chat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to right, #642B73, #C6426E); /* Gradient background */
+}
+
+/* Chatbot Container - Clean Modern Look */
+.react-chatbot-kit-chat-container {
+    width: 65vw;
+    max-width: 800px;
+    height: 500px;
+    background: white; /* No morphing, solid white */
+    border-radius: 15px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Chatbot Hover Effect */
+.react-chatbot-kit-chat-container:hover {
+    transform: scale(1.02);
+}
+
+/* Message Area: Fixed Height & Smooth Scrolling */
+.react-chatbot-kit-chat-message-container {
+    flex: 1;
+    height: 400px;
+    padding: 10px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* Chatbot Messages - Smaller Font & Rounded Corners */
+.react-chatbot-kit-chat-bot-message {
+    background: linear-gradient(135deg, #6A11CB, #2575FC);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 15px 15px 15px 5px;
+    max-width: 70%;
+    width: fit-content;
+    margin: 8px 2%;
+    font-size: 14px; /* Reduced size */
+    line-height: 1.4;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+/* User Messages - Stylish Bubble with Tail */
+.react-chatbot-kit-user-chat-message {
+    position: relative;
+    background: linear-gradient(135deg, #ff7eb3, #ff4d4d);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 15px 15px 5px 15px;
+    max-width: 60%; /* Reduce width slightly to push it right */
+    width: fit-content;
+    margin: 10px 2% 10px auto; /* Push it more to the right */
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    box-shadow: 0px 4px 15px rgba(255, 77, 77, 0.3);
+    opacity: 0;
+    animation: fadeIn 0.4s forwards ease-in-out;
+    transition: all 0.3s ease-in-out;
+    word-wrap: break-word;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+
+/* Chatbot Message Arrow */
+.react-chatbot-kit-chat-bot-message-arrow {
+    border-right: 8px solid #2575FC;
+}
+.react-chatbot-kit-user-chat-message-arrow {
+    border-left: 8px solid #f10f0f;
+    border-right: 0px
+}
+/* Input Area - Solid Background */
+.react-chatbot-kit-chat-input-container {
+    background: #F4F4F4;
+    padding: 10px;
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+/* Chat Input Field */
+.react-chatbot-kit-chat-input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    background: white;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Chat Input Field Focus Effect */
+.react-chatbot-kit-chat-input:focus {
+    border: 2px solid #2575FC;
+    box-shadow: 0px 0px 10px rgba(37, 117, 252, 0.5);
+}
+
+/* Send Button - Animated Glow Effect */
+.react-chatbot-kit-chat-btn-send {
+    background: linear-gradient(135deg, #C6426E, #642B73);
+    border: none;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 16px;
+    transition: 0.3s;
+    box-shadow: 0px 0px 8px rgba(198, 66, 110, 0.7);
+}
+
+/* Send Button Hover Effect */
+.react-chatbot-kit-chat-btn-send:hover {
+    background: linear-gradient(135deg, #642B73, #C6426E);
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px rgba(198, 66, 110, 1);
+}
+
+/* BOT Avatar */
+.BOT {
+    background-color: #c5436e;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    color: white;
+    border-radius: 100%;
+}
+
+/* Fade-In Animation for Messages */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .react-chatbot-kit-chat-container {
+        width: 90%;
+        height: 450px;
+    }
+
+    .react-chatbot-kit-chat-message-container {
+        height: 350px;
+    }
+
+    .react-chatbot-kit-chat-bot-message {
+        font-size: 13px; /* Even smaller response size on mobile */
+    }
+
+    .react-chatbot-kit-chat-user-message {
+        font-size: 14px;
+    }
+}

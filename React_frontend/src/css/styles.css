@@ -1,0 +1,203 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Login Page */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.login-container input {
+  margin: 10px;
+  padding: 10px;
+  width: 200px;
+}
+
+.login-container button {
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.upload-btn {
+  background: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+
+.delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.logout-btn {
+  background: #d60000; /* Same as upload button */
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+/* Sidebar with Glassmorphism Effect */
+.sidebar {
+  width: 300px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+
+/* Chat Section with Gradient Background */
+.chat-section {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: rgb(0,0,0);
+  background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgba(119,26,68,1) 43%);
+  color: white; /* Ensures text is readable */
+}
+
+
+.chat-heading {
+  font-size: 35px; /* Increase font size */
+  font-weight: bold;
+  text-align: center;
+  color: #f3f1f1; /* Attractive blue color */
+  text-transform: uppercase; /* Make it more structured */
+  text-shadow: 5px 5px 5px rgba(32, 7, 27, 0.3); /* Adds a soft glow effect */
+  margin-bottom: 15px;
+  letter-spacing: 1px; /* Slight letter spacing for better readability */
+}
+
+
+.sidebar h2 {
+  font-size: 18px; /* Slightly larger */
+  font-weight: bold; /* Make it stand out */
+  text-align: left; /* Align with the sidebar menu */
+  color: white; /* Sidebar text color */
+  padding: 10px 0; /* Add vertical spacing without margin */
+  border-bottom: 2px solid #555; /* Underline effect */
+  text-transform: uppercase; /* Optional: Makes it look structured */
+}
+
+/* Style for the document list container */
+/* Sidebar List */
+.file-list-container {
+  background: #1e1e1e;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-height: 250px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+/* Style for the document list inside the container */
+.file-list {
+  list-style: none; /* Remove default list styling */
+  padding: 0;
+  margin: 0;
+}
+
+/* Sidebar List Items */
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  background: #2a2a2a;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  color: white;
+  font-size: 14px;
+  transition: background 0.3s ease-in-out;
+}
+
+/* List Item Hover Effect */
+.file-item:hover {
+  background: #444;
+}
+
+/* Ensure filenames are truncated and aligned */
+.file-name {
+  flex: 1;
+  max-width: 150px; /* Adjust as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+  color: white;
+}
+
+/* Delete button should always be right-aligned */
+.delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin-left: auto; /* Pushes delete button to the right */
+}
+
+/* Sidebar Buttons */
+.sidebar button {
+  background: linear-gradient(135deg, #ff6a00, #ee0979);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+/* Sidebar Button Hover Effect */
+.sidebar button:hover {
+  background: linear-gradient(135deg, #ee0979, #ff6a00);
+  transform: scale(1.05);
+  box-shadow: 0px 4px 15px rgba(255, 106, 0, 0.5);
+}
+

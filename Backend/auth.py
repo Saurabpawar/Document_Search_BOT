@@ -1,14 +1,14 @@
 import mysql.connector
 from flask import session
-from werkzeug.security import check_password_hash  # To securely check password hashes
+from werkzeug.security import check_password_hash  
 
 def get_db_connection():
     """Establish a connection to the MySQL database."""
     return mysql.connector.connect(
-        host="localhost",      # replace with your database host if needed
-        user="root",           # replace with your MySQL username
-        password="root",       # replace with your MySQL password
-        database="user_auth"   # replace with your actual database name
+        host="localhost",      
+        user="root",         
+        password="root",     
+        database="user_auth"  
     )
 
 def authenticate():

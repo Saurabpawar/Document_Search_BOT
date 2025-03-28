@@ -4,10 +4,10 @@ from werkzeug.security import generate_password_hash
 # Establish a connection to the MySQL database
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",       # Replace with your MySQL host if needed
-        user="root",            # Replace with your MySQL username
-        password="root",        # Replace with your MySQL password
-        database="user_auth"    # Replace with your actual database name
+        host="localhost",       
+        user="root",            
+        password="root",        
+        database="user_auth"   
     )
 
 # Function to insert a new user into the database

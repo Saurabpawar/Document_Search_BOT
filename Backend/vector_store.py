@@ -13,7 +13,6 @@ def add_texts_to_vector_store(text_chunks, metadatas):
 def search_query_in_vector_store(query, k=1):
     """
     Perform similarity search in Chroma and return the top k results.
-    Then, rank the results using a custom similarity function.
     """
     # Perform the initial similarity search to retrieve k documents
     search_results = vector_store.similarity_search(query, k=k)

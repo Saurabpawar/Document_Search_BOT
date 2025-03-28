@@ -140,47 +140,41 @@ def process_query():
     document_name = matched_doc.metadata.get("filename", "Unknown filename")
     document_content = matched_doc.page_content
 
-    
     model = genai.GenerativeModel("gemini-1.5-flash")
-prompt_template = f"""
 
-You are an advanced AI assistant tasked with answering user queries based on provided document context. 
+    prompt_template = f"""
+    
+    You are an advanced AI assistant tasked with answering user queries based on provided document context. 
+    
+    Use only the given document content to formulate a precise, clear, and well-structured answer. 
+    
+    Do NOT include information that is not present in the document.
+    
+    
+    ### Document Information:
+    
+    - **Filename**: {document_name}
+    
+    - **Extracted Content**: 
+    
+    {document_content}
+    
+    
+    ### User Query:
+    
+    {user_query}
 
-Use only the given document content to formulate a precise, clear, and well-structured answer. 
+    ### Your Response:
+    
+    - Provide a **concise and accurate answer** based on the document.
+    
+    - If the document **does not contain relevant information**, clearly state that.
+    
+    - Use a **structured format** if applicable (e.g., bullet points, paragraphs).
+    
+    """
 
-Do NOT include information that is not present in the document.
-
-
-
-### Document Information:
-
-- **Filename**: {document_name}
-
-- **Extracted Content**: 
-
-{document_content}
-
-
-
-### User Query:
-
-{user_query}
-
-
-
-### Your Response:
-
-- Provide a **concise and accurate answer** based on the document.
-
-- If the document **does not contain relevant information**, clearly state that.
-
-- Use a **structured format** if applicable (e.g., bullet points, paragraphs).
-
-"""
-
-
-
-response = model.generate_content(prompt_template)
+    response = model.generate_content(prompt_template)
 
 
     return jsonify({'document_name': document_name, 'response': response.text}), 200

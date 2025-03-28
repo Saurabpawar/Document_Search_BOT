@@ -1,5 +1,3 @@
-# chroma_delete.py
-
 # Function to delete file from Chroma Vector Store
 def delete_file_from_vector_store(vector_store, filename):
     try:

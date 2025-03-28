@@ -4,13 +4,11 @@ from werkzeug.utils import secure_filename
 from flask import Flask, request, jsonify, session
 from flask_cors import CORS
 import google.generativeai as genai
-
-# Importing modules
 from file_parsing import parse_pdf, parse_docx, parse_xlsx, parse_pptx
 from auth import authenticate, login, logout
 from text_splitter import split_text
 from vector_store import add_texts_to_vector_store, search_query_in_vector_store, vector_store
-from chroma_delete import delete_file_from_vector_store  # Import the delete function
+from chroma_delete import delete_file_from_vector_store 
 
 # Configure Gemini API Key
 genai.configure(api_key="AIzaSyAzHxmg7rQDfZAQxBH2IC21")
@@ -130,20 +128,19 @@ def process_query():
     if not user_query:
         return jsonify({'error': 'Query is required'}), 400
 
-    # Search in Chroma Vector Store and rank documents
+    #
     results = search_query_in_vector_store(user_query, k=1)
 
     if not results:
         return jsonify({'response': 'No relevant document found'}), 200
 
-    # Get the top-ranked document
+    
     matched_doc = results[0]
 
-    # ✅ Correct way to access filename and content
     document_name = matched_doc.metadata.get("filename", "Unknown filename")
     document_content = matched_doc.page_content
 
-    # Send to Gemini API
+    
     model = genai.GenerativeModel("gemini-1.5-flash")
     response = model.generate_content(f"Document: {document_name}\nContent: {document_content}\nUser Query: {user_query}")
 

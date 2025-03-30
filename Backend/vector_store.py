@@ -10,7 +10,7 @@ vector_store = Chroma(persist_directory=VECTOR_DB_PATH, embedding_function=embed
 def add_texts_to_vector_store(text_chunks, metadatas):
     vector_store.add_texts(text_chunks, metadatas=metadatas)
 
-def search_query_in_vector_store(query, k=1):
+def search_query_in_vector_store(query, k):
     """
     Perform similarity search in Chroma and return the top k results.
     """

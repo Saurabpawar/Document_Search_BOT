@@ -121,103 +121,54 @@ def delete_file(filename):
 
 
 @app.route('/query', methods=['POST'])
-
 def process_query():
-
-data = request.json
-
-user_query = data.get('query')
-
-
-
-if not user_query:
-
-    return jsonify({'error': 'Query is required'}), 400
-
-
-
-# Search in Chroma Vector Store and fetch top k=3 results
-
-results = search_query_in_vector_store(user_query, k=3)
-
-
-
-if not results:
-
-    return jsonify({'response': 'No relevant document found'}), 200
-
-
-
-# Extract filenames and combine content from the top k documents
-
-document_details = []
-
-combined_content = ""
-
-
-
-for doc in results:
-
-    filename = doc.metadata.get("filename", "Unknown filename")
-
-    content = doc.page_content
-
-    document_details.append(f"- **Filename**: {filename}\n- **Extracted Content**:\n{content}\n\n")
-
-    combined_content += f"{content}\n\n"
-
-
-
-document_info = "\n".join(document_details)
-
-
-
-# Send to Gemini API
-
-model = genai.GenerativeModel("gemini-1.5-flash")
-
-
-
-prompt_template = f"""
-
-You are an advanced AI assistant tasked with answering user queries based on provided document context. 
-
-Use only the given document content to formulate a precise, clear, and well-structured answer. 
-
-Do NOT include information that is not present in the document.
-
-
-
-### Document Information:
-
-{document_info}
-
-
-
-### User Query:
-
-{user_query}
-
-
-
-### Your Response:
-
-- Provide a **concise and accurate answer** based on the document.
-
-- If the document **does not contain relevant information**, clearly state that.
-
-- Use a **structured format** if applicable (e.g., bullet points, paragraphs).
-
-"""
-
-
-
-response = model.generate_content(prompt_template)
-
-
-
-return jsonify({'response': response.text}), 200
-
+    data = request.json
+    user_query = data.get('query')
+    
+    if not user_query:
+        return jsonify({'error': 'Query is required'}), 400
+    
+    # Search in Chroma Vector Store and fetch top k=3 results
+    results = search_query_in_vector_store(user_query, k=3)
+    
+    if not results:
+        return jsonify({'response': 'No relevant document found'}), 200
+    
+    # Extract filenames and combine content from the top k documents
+    document_details = []
+    combined_content = ""
+    for doc in results:
+        filename = doc.metadata.get("filename", "Unknown filename")
+        content = doc.page_content
+        document_details.append(f"- **Filename**: {filename}\n- **Extracted Content**:\n{content}\n\n")
+        combined_content += f"{content}\n\n"
+        
+    document_info = "\n".join(document_details)
+    
+    # Send to Gemini API
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    
+    prompt_template = f"""
+    You are an advanced AI assistant tasked with answering user queries based on provided document context. 
+    Use only the given document content to formulate a precise, clear, and well-structured answer. 
+    Do NOT include information that is not present in the document.
+    
+    ### Document Information:
+    {document_info}
+    
+    ### User Query:
+    {user_query}
+    
+    ### Your Response:
+    - Provide a **concise and accurate answer** based on the document.
+    - If the document **does not contain relevant information**, clearly state that.
+    - Use a **structured format** if applicable (e.g., bullet points, paragraphs).
+    """
+    
+    response = model.generate_content(prompt_template)
+    
+    return jsonify({'response': response.text}), 200
+    
 
 if __name__ == '__main__':
     app.run(debug=False)

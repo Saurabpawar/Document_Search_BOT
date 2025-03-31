@@ -14,4 +14,6 @@ Advanced Document Search: Uses vector embeddings for efficient search.
 
 File Upload & Management: Admins can upload, index, and delete files.
 
+Supported file types : Word, PPT, PDF, Excel upto 2mb size limit.
+
 Secure Backend: Flask API with MySQL and ChromaDB integration.
